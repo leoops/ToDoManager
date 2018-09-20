@@ -2,24 +2,32 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        justifyContent: 'center',
-        // alignItems: 'center',
+        flex: 1,
     },
     input: {
-        //flex: 1,
+        textAlign: 'left',
+        marginHorizontal: 10,
+        marginBottom: 10,
     },
     button: {
-        // alignSelf: 'center',
+        flex: 1
     },
     image: {
-        alignSelf:"center",
-        width: 300,
-        height: 300,
-        resizeMode: 'contain'
+        width: 250,
+        height: 250,
+        resizeMode: 'contain',
+        
     },
     transparentButton: {
         marginTop: 10,
         alignSelf: 'center',
-    }
+    },
+    logo :{
+        alignSelf: 'center',
+        justifyContent: 'flex-start',
+        marginBottom: 30,
+        backgroundColor: 'red',
+    },
+    body: {
+    },
 });
