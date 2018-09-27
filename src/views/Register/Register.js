@@ -1,8 +1,9 @@
 import React, { Component} from 'react';
-import { SafeAreaView, KeyboardAvoidingView, View, Image, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { KeyboardAvoidingView, View, Image, Text, TextInput, Button, Alert } from 'react-native';
 
 import imageLogo from '../../assets/Logo.png';
 import { styles } from './styles';
+import { createUserOnFirebaseAsync } from '../../services/FirebaseApi';
 
 export default class Registry extends Component {
     constructor(props){
@@ -12,7 +13,21 @@ export default class Registry extends Component {
             password: ''
         }
     }
-
+    _createUserAsync = async () => {
+        const { user, password } = this.state
+        try {
+            const user = await createUserOnFirebaseAsync(email, password)
+            
+            Alert.alert(`User Created`, `User ${user.email} has succesfuly been created`, [{
+                text: 'Ok', onPress: () => {
+                this.props.navigation.goBack();
+                }
+                }]);
+            this.state.setState({email: '', password: '' })
+        } catch(error) {
+            Alert.alert('Created User Failed', error.message);
+        }
+    }
     render = () => {
         return(
             <KeyboardAvoidingView
@@ -48,7 +63,7 @@ export default class Registry extends Component {
                     <Button 
                         title='Registry User'
                         onPress={() => {
-                            Alert.alert(`Email ${this.state.email}\n Password: ${this.state.password}`)
+                            this._createUserAsync()
                         }}
                     />
                 </View>
