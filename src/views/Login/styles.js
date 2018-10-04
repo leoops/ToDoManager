@@ -25,8 +25,7 @@ export const styles = StyleSheet.create({
     logo :{
         alignSelf: 'center',
         justifyContent: 'flex-start',
-        marginBottom: 30,
-        backgroundColor: 'red',
+        marginBottom: 30
     },
     body: {
     },

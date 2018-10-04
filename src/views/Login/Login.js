@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Image, TextInput, Button, TouchableOpacity, Text} from 'react-native';
+import { View, Image, TextInput, Button, TouchableOpacity, Text, Alert} from 'react-native';
 import { signInOnFirebase } from "../../services/FirebaseApi";
 import { styles } from './styles';
 
@@ -15,15 +15,15 @@ export default class Login extends Component{
       }
     }
     handlerState = (name, value) => (
-        this.setState({
+      this.setState({
             [name] : value,
         })
     )
     signInOnFirebase = async () => {
       const { email, password } = this.state
       try {
-        const user = await signInOnFirebase(email, password)
-        this.props.navigation.navigate('Main')
+        await signInOnFirebase(email, password)
+        this.props.navigation.replace('TasksList')
       } catch (error) {
         Alert.alert(`Login failed`, error.message)
       }
@@ -41,18 +41,19 @@ export default class Login extends Component{
               style={styles.input} 
               value={this.state.email}
               placeholder="Email"
-              onChangeText={ text => this.handlerState('email', text)}
+              onChangeText={ email => this.setState({ email })}
             />
             <TextInput 
               style={styles.input}
               value={this.state.password}
               placeholder="Password"
               secureTextEntry={true}
+              onChangeText={ password => this.setState({ password })}
             />
             <Button 
             style={styles.button}
               title="Login"
-              onPress={ this.signInOnFirebase() }
+              onPress={this.signInOnFirebase}
             />
           </View>
           <TouchableOpacity 

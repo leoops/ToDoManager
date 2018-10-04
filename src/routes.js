@@ -1,14 +1,45 @@
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator, createBottomTabNavigator } from "react-navigation";
 import Login, { LoginNavigationOptions } from './views/Login/Login';
 import Registry, { RegistryNavigationOptions } from "./views/Register/Register";
- 
-export const Routes = createStackNavigator({
-    Login: {
-        screen: Login,
-        navigationOptions: LoginNavigationOptions,
+import DoneTasks, { DoneTasksNavigationOptions } from "./views/DoneTasks/DoneTasks";
+import ToDoTasks, { ToDoTasksNavigationOptions } from "./views/ToDoTasks/ToDoTasks";
+import { Platform } from 'react-native';
+const tasksListNavigator = createBottomTabNavigator({
+    ToDoTasks: { 
+        screen: ToDoTasks, 
+        title: 'To Do',
+        navigationOptions: ToDoTasksNavigationOptions
     },
-    Registry: {
-        screen: Registry,
-        navigationOptions: RegistryNavigationOptions
+    DoneTasks: { 
+        screen: DoneTasks, 
+        title: 'Done',
+        navigationOptions: DoneTasksNavigationOptions
     }
 })
+export const Routes = createStackNavigator(
+    {
+        Login: {
+            screen: Login,
+            navigationOptions: LoginNavigationOptions,
+        },
+        Registry: {
+            screen: Registry,
+            navigationOptions: RegistryNavigationOptions
+        },
+        TasksList: {
+            screen: tasksListNavigator,
+            navigationOptions: {
+                ...Platform.select({
+                ios: {
+                  header: null
+                },
+                android: {
+                    title: 'Task List'
+                },
+              })
+            },
+        }
+    },{
+        headerMode: 'screen'
+    }
+)

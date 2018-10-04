@@ -12,13 +12,14 @@ const config  = {
 export const initializeFirebaseApi = () => firebase.initializeApp(config);
 
 export const createUserOnFirebaseAsync = async (email, password) => {
-    const { user } = await firebase
+    const user = await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password);
 
     return user.user;
 }
 export const signInOnFirebase = async (email, password) => {
+    alert('oi', email, password);
     const user = await firebase.auth().signInWithEmailAndPassword(email, password);
     return user.user;
 }

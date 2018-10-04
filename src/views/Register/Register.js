@@ -14,16 +14,17 @@ export default class Registry extends Component {
         }
     }
     _createUserAsync = async () => {
-        const { user, password } = this.state
+        const { email, password } = this.state
         try {
             const user = await createUserOnFirebaseAsync(email, password)
             
             Alert.alert(`User Created`, `User ${user.email} has succesfuly been created`, [{
-                text: 'Ok', onPress: () => {
-                this.props.navigation.goBack();
-                }
-                }]);
-            this.state.setState({email: '', password: '' })
+                    text: 'Ok', onPress: () => {
+                        this.props.navigation.goBack();
+                    }
+                }]
+            );
+            this.setState({email: '', password: '' })
         } catch(error) {
             Alert.alert('Created User Failed', error.message);
         }
@@ -50,8 +51,7 @@ export default class Registry extends Component {
                         placeholder='Email'
                         keyboardType={'email-address'}
                         autoCapitalize='none'
-                        onChangeText={ email => {
-                            this.setState({ email })
+                        onChangeText={ email => { this.setState({ email })
                         }}
                     />
                     <TextInput
@@ -62,9 +62,7 @@ export default class Registry extends Component {
                     />
                     <Button 
                         title='Registry User'
-                        onPress={() => {
-                            this._createUserAsync()
-                        }}
+                        onPress={this._createUserAsync}
                     />
                 </View>
             </KeyboardAvoidingView>
