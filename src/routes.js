@@ -1,4 +1,5 @@
 import { createStackNavigator, createBottomTabNavigator } from "react-navigation";
+import App from './views/App';
 import Login, { LoginNavigationOptions } from './views/Login/Login';
 import Registry, { RegistryNavigationOptions } from "./views/Register/Register";
 import DoneTasks, { DoneTasksNavigationOptions } from "./views/DoneTasks/DoneTasks";
@@ -18,6 +19,9 @@ const tasksListNavigator = createBottomTabNavigator({
 })
 export const Routes = createStackNavigator(
     {
+        App: {
+            screen: App
+        },
         Login: {
             screen: Login,
             navigationOptions: LoginNavigationOptions,

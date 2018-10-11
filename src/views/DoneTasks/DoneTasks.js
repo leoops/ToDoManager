@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Image, View } from 'react-native';
+import { Image, View, ActivityIndicator } from 'react-native';
 import doneList from '../../assets/done.png'
-import styles from './styles'
+import { styles } from './styles'
 
 export default class DoneTasks extends Component {
     render = () => {
         return(
-            <View style={styles.container} />
+            <View style={styles.container}>
+                <ActivityIndicator style={styles.loading} />
+            </View>
         );
     }
 } 
