@@ -9,5 +9,9 @@ export const styles = StyleSheet.create({
     icon: {
         height: 24,
         width: 24
+    },
+    floatButton: {
+        position: 'absolute',
     }
+
 })

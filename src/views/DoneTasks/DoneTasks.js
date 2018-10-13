@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
-import { Image, View, ActivityIndicator } from 'react-native';
-import doneList from '../../assets/done.png'
+import { Image, View } from 'react-native';
+import { readTaskFromFirebase } from '../../services/FirebaseApi';
 import { styles } from './styles'
+import TaskListView from '../../components/TaskListView/TaskListView';
+import doneList from '../../assets/done.png'
 
 export default class DoneTasks extends Component {
+    state = {
+        tasks: []
+    }
+
+    componentDidMount = () => {
+        // indica qual contexto em deve ser utilizado na funcao
+        //readTaskFromFirebase(this._fetchTasks.bind(this));
+        readTaskFromFirebase(this._fetchTasks)
+    }
+    _fetchTasks = tasks => {
+        const tasksDone = tasks.filter(t => t.isDone);
+        this.setState({ tasks: tasksDone })
+    }
     render = () => {
-        return(
+        return (
             <View style={styles.container}>
-                <ActivityIndicator style={styles.loading} />
+                <TaskListView tasks={this.state.tasks} navigation={this.props.navigation} />
             </View>
         );
     }
-} 
+}
 
 export const DoneTasksNavigationOptions = {
     tabBarLabel: 'Done',
-    tabBarIcon: ({ tintColor }) => (<Image source={doneList} style={[styles.icon, {tintColor: tintColor}]} />)
+    tabBarIcon: ({ tintColor }) => (<Image source={doneList} style={[styles.icon, { tintColor: tintColor }]} />)
 }
