@@ -2,30 +2,32 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-    },
-    topView: {
-        flex: 0.2,
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 25,
-    },
-    img: {
-        width: 50,
-        height: 50,
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    bottonView: {
-        flex: 1,
-        flexDirection: 'column',
-        paddingRight: 20,
-        paddingLeft: 20
+        alignContent: 'center',
+        justifyContent: 'center'
     },
     input: {
-        marginBottom: 20
+        textAlign: 'left',
+        backgroundColor: '#fff',
+        marginHorizontal: 35,
+        marginBottom: 10,
+        borderRadius: 25,
+        padding: 10,
+    },
+    button: {
+        marginTop: 10,
+        padding: 12,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        backgroundColor: '#555',
+        alignSelf: 'center',
+    },
+    textButton: {
+        color: '#fff',
+        fontSize: 20,
+    },
+    title: {
+        alignSelf: 'center',
+        fontSize: 35,
+        marginBottom: 50
     }
 })

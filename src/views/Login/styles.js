@@ -3,30 +3,47 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignContent: 'center',
+        justifyContent: 'center'
     },
     input: {
         textAlign: 'left',
-        marginHorizontal: 10,
+        backgroundColor: '#fff',
+        marginHorizontal: 35,
         marginBottom: 10,
+        borderRadius: 25,
+        padding: 10,
     },
     button: {
-        flex: 1
+        marginTop: 10,
+        padding: 12,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        backgroundColor: '#555',
+        alignSelf: 'center',
+    },
+    textButton: {
+        color: '#fff',
+        fontSize: 20,
     },
     image: {
-        width: 250,
-        height: 250,
-        resizeMode: 'contain',
-        
+        width: 120,
+        height: 120,
+        tintColor: '#555'
     },
     transparentButton: {
-        marginTop: 10,
+        marginTop: 20,
         alignSelf: 'center',
     },
-    logo :{
+    transparentButtonText: {
+        color: '#00AAFF',
+        fontSize: 15
+    },
+    logo: {
         alignSelf: 'center',
-        justifyContent: 'flex-start',
-        marginBottom: 30
-    },
-    body: {
-    },
+        marginBottom: 20,
+        borderRadius: 90,
+        backgroundColor: '#fff',
+        padding: 30
+    }
 });

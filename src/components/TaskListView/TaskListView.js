@@ -8,7 +8,7 @@ export default class TaskListView extends Component {
     _renderSectionHeader = (sectionData) => (
         <View style={styles.headerContainer}>
             <View style={styles.headerTagContainer}>
-                <Text style={styles.headerText}>{sectionData.section.title.substr(0, 1)}</Text>
+                <Text style={styles.headerTextTag}>{sectionData.section.title.substr(0, 1)}</Text>
             </View>
             <Text style={styles.headerText}>{sectionData.section.title}</Text>
         </View>
@@ -46,26 +46,28 @@ export default class TaskListView extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        paddingHorizontal: 10
-    },
     headerContainer: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: 'silver',
+        backgroundColor: '#00AAFF',
         borderRadius: 25,
         marginTop: 10
     },
     headerTagContainer: {
-        color: '#fff',
-        fontSize: 22,
+        backgroundColor: '#fff',
+        borderRadius: 20,
+    },
+    headerTextTag: {
+        fontSize: 16,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        color: '#000'
     },
     headerText: {
         fontSize: 16,
-        marginLeft: 10
+        marginLeft: 10,
+        color: '#fff'
     },
     itemContainer: {
         flex: 1,
