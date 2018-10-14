@@ -72,10 +72,11 @@ const styles = StyleSheet.create({
     itemContainer: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: '#F3F2F0',
+        backgroundColor: '#FFF',
         marginTop: 5,
+        marginLeft: 15,
+        marginRight: 10,
         padding: 10,
-        height: 75
     },
     itemTextTitle: {
         fontSize: 22

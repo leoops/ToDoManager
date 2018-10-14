@@ -26,12 +26,12 @@ export default class ToDoTasks extends Component {
     render = () => {
         return (
             <View style={styles.container}>
-                <TaskListView tasks={this.state.tasks} navigation={this.props.navigation} />
                 <TouchableOpacity
                     style={styles.floatButton}
                     onPress={this.goToTask} >
                     <Image style={styles.icon} source={imgPlus} />
                 </TouchableOpacity>
+                <TaskListView tasks={this.state.tasks} navigation={this.props.navigation} />
             </View>
         )
     }

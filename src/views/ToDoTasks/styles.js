@@ -11,7 +11,11 @@ export const styles = StyleSheet.create({
         width: 24
     },
     floatButton: {
-        position: 'absolute',
+        padding: 10,
+        borderRadius: 100,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignSelf: 'flex-end',
     }
 
 })

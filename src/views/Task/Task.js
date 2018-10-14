@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Switch, Text, Button, Alert, StyleSheet } from 'react-native';
+import { View, TextInput, Switch, Text, Button, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { writeTaskOnFirebase } from '../../services/FirebaseApi';
 
 export default class Task extends Component {
@@ -75,10 +75,12 @@ export default class Task extends Component {
                     />
                     <Text style={styles.switchText}>Is Done?</Text>
                 </View>
-                <Button
-                    title='Save'
+                <TouchableOpacity
+                    style={styles.button}
                     onPress={this._saveTask}
-                />
+                >
+                    <Text style={styles.textButton}>Save</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -90,11 +92,18 @@ export const TasksNavigationOptions = {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
         flexDirection: 'column',
         padding: 20,
     },
     input: {
-        marginBottom: 20,
+        backgroundColor: '#fff',
+        paddingLeft: 10,
+        paddingVertical: 5,
+        marginBottom: 10,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#555',
     },
     multilineInput: {
         height: 100,
@@ -108,5 +117,17 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         color: 'blue',
         fontSize: 18
+    },
+    button: {
+        marginTop: 10,
+        padding: 12,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        backgroundColor: '#555',
+        alignSelf: 'center',
+    },
+    textButton: {
+        color: '#fff',
+        fontSize: 20,
     },
 })
